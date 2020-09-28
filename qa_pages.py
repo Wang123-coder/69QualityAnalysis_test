@@ -21,17 +21,17 @@ def close_FrontPage(out,grid):
 def firstPage(out,grid):
     grid = close_FrontPage(out,grid)
 
-    with open('./image/leftup.png', 'rb') as f1:
+    with open('./leftup.png', 'rb') as f1:
         leftup = f1.read()
         grid[1:5,:4] = widgets.Image(value = leftup)
     f1.close()
     
-    with open('./image/rightdown.png', 'rb') as f2:
+    with open('./rightdown.png', 'rb') as f2:
         rightdown = f2.read()
         grid[15:,25:29] = widgets.Image(value = rightdown)
     f2.close()
 
-    with open('./image/xiaohui.png', 'rb') as f3:
+    with open('./xiaohui.png', 'rb') as f3:
         content = f3.read()
         grid[4:13,9:24] = widgets.Image(value = content)
     f3.close()
