@@ -1,6 +1,5 @@
 argon2-cffi==20.1.0
 async-generator==1.10
-attrs==20.2.0
 backcall==0.1.0
 beautifulsoup4==4.6.3
 bleach==3.2.1
