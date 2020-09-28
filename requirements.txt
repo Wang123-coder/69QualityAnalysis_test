@@ -59,7 +59,6 @@ pywinpty==0.5.7
 pyzmq==18.1.1
 requests==2.23.0
 Send2Trash==1.5.0
-six==1.14.0
 terminado==0.9.1
 testpath==0.4.4
 tornado==6.0.3
