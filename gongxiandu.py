@@ -4,11 +4,9 @@ from IPython.display import display, Javascript
 import matplotlib
 import matplotlib.pyplot as plt
 
-def drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,class_num):
+def drawing(temp_out,x,chinese_y,math_y,english_y,physical_y,chemistry_y,class_num):
 
     temp_out.clear_output()
-
-    x = ['1', '2', '3', '4']
 
     with temp_out:
         plt.plot(x, chinese_y, marker='*', ms=10, label="Chinese")
@@ -25,7 +23,6 @@ def drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,class_num
         for y in [chinese_y, math_y, english_y, physical_y, chemistry_y]:
             for x1, yy in zip(x, y):
                 plt.text(x1, yy+1, str(yy), ha='center', va='bottom', fontsize=20, rotation=0)
-        plt.savefig("a.jpg")
         plt.show()
 
     return
@@ -66,131 +63,51 @@ def gongxianToClass(grid,table,nrows):
                 temp_grid[i,0].description = '物理'
             elif i in [6,12,18,24]:
                 temp_grid[i,0].description = '化学'
-            
-    
+    temp_grid[25,0] = widgets.Button(description = '确定当前数据内容')
+
     
     grid[1:19,0:30].children[0].children[5].children = [widgets.HBox([temp_grid,temp_out])]
 
-    chinese_y = [0]*4
-    math_y = [0]*4
-    english_y = [0]*4
-    physical_y = [0]*4
-    chemistry_y = [0]*4
+    
 
     with temp_out:
         print('请先在左侧进行选择！')
 
-    def show_info_20(change):
-        chinese_y[0] = change['new'] + 1
-        drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,str(temp_grid[0,0].index + 1))   
-    temp_grid[2,0].observe(show_info_20,names = 'index')
-
-    def show_info_30(change):
-        math_y[0] = change['new'] + 1
-        drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,str(temp_grid[0,0].index + 1))   
-    temp_grid[3,0].observe(show_info_30,names = 'index')
-
-    def show_info_40(change):
-        english_y[0] = change['new'] + 1
-        drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,str(temp_grid[0,0].index + 1))   
-    temp_grid[4,0].observe(show_info_40,names = 'index')
-
-    def show_info_50(change):
-        physical_y[0] = change['new'] + 1
-        drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,str(temp_grid[0,0].index + 1))   
-    temp_grid[5,0].observe(show_info_50,names = 'index')
-
-    def show_info_60(change):
-        chemistry_y[0] = change['new'] + 1
-        drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,str(temp_grid[0,0].index + 1))   
-    temp_grid[6,0].observe(show_info_60,names = 'index')
-
-    #--------------------------------------------------#
-
-    def show_info_80(change):
-        chinese_y[1] = change['new'] + 1
-        drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,str(temp_grid[0,0].index + 1))   
-    temp_grid[8,0].observe(show_info_80,names = 'index')
-
-    def show_info_90(change):
-        math_y[1] = change['new'] + 1
-        drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,str(temp_grid[0,0].index + 1))   
-    temp_grid[9,0].observe(show_info_90,names = 'index')
-
-    def show_info_100(change):
-        english_y[1] = change['new'] + 1
-        drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,str(temp_grid[0,0].index + 1))   
-    temp_grid[10,0].observe(show_info_100,names = 'index')
-
-    def show_info_110(change):
-        physical_y[1] = change['new'] + 1
-        drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,str(temp_grid[0,0].index + 1))   
-    temp_grid[11,0].observe(show_info_110,names = 'index')
-
-    def show_info_120(change):
-        chemistry_y[1] = change['new'] + 1
-        drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,str(temp_grid[0,0].index + 1))   
-    temp_grid[12,0].observe(show_info_120,names = 'index')
-
-    #--------------------------------------------------#
-    def show_info_140(change):
-        chinese_y[2] = change['new'] + 1
-        drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,str(temp_grid[0,0].index + 1))   
-    temp_grid[14,0].observe(show_info_140,names = 'index')
-
-    def show_info_150(change):
-        math_y[2] = change['new'] + 1
-        drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,str(temp_grid[0,0].index + 1))   
-    temp_grid[15,0].observe(show_info_150,names = 'index')
-
-    def show_info_160(change):
-        english_y[2] = change['new'] + 1
-        drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,str(temp_grid[0,0].index + 1))   
-    temp_grid[16,0].observe(show_info_160,names = 'index')
-
-    def show_info_170(change):
-        physical_y[2] = change['new'] + 1
-        drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,str(temp_grid[0,0].index + 1))   
-    temp_grid[17,0].observe(show_info_170,names = 'index')
-
-    def show_info_180(change):
-        chemistry_y[2] = change['new'] + 1
-        drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,str(temp_grid[0,0].index + 1))   
-    temp_grid[18,0].observe(show_info_180,names = 'index')
-
-    #--------------------------------------------------#
-    def show_info_200(change):
-        chinese_y[3] = change['new'] + 1
-        drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,str(temp_grid[0,0].index + 1))   
-    temp_grid[20,0].observe(show_info_200,names = 'index')
-
-    def show_info_210(change):
-        math_y[3] = change['new'] + 1
-        drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,str(temp_grid[0,0].index + 1))   
-    temp_grid[21,0].observe(show_info_210,names = 'index')
-
-    def show_info_220(change):
-        english_y[3] = change['new'] + 1
-        drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,str(temp_grid[0,0].index + 1))   
-    temp_grid[22,0].observe(show_info_220,names = 'index')
-
-    def show_info_230(change):
-        physical_y[3] = change['new'] + 1
-        drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,str(temp_grid[0,0].index + 1))   
-    temp_grid[23,0].observe(show_info_230,names = 'index')
-
-    def show_info_240(change):
-        chemistry_y[3] = change['new'] + 1
-        drawing(temp_out,chinese_y,math_y,english_y,physical_y,chemistry_y,str(temp_grid[0,0].index + 1))   
-    temp_grid[24,0].observe(show_info_240,names = 'index')
-
-    #--------------------------------------------------#
-    
-
-    '''
-    for  i in range(25):
-        if i not in [1,7,13,19] and temp_grid[i,0].index != 16:
-            temp_grid[i,0].observe(show_info,names = 'index')'''
-    
+    def button_click(b):
+        chinese_y = []
+        math_y = []
+        english_y = []
+        physical_y = []
+        chemistry_y = []
+        x = []
+        count = 0
+        
+        if temp_grid[0,0].value == '' or temp_grid[2,0].value == '' or temp_grid[3,0].value == '' or temp_grid[4,0].value == '' or temp_grid[5,0].value == '' or temp_grid[6,0].value == '':
+            temp_out.clear_output()
+            with temp_out:
+                print('班级与第一次考试排名不能为空！')
+        else:
+            for i in [2,8,14,20]:
+                if temp_grid[i,0].index < 16:
+                    count = count + 1
+                    chinese_y = chinese_y + [temp_grid[i,0].index + 1]
+            for i in [3,9,15,21]:
+                if temp_grid[i,0].index < 16:
+                    math_y = math_y + [temp_grid[i,0].index + 1]
+            for i in [4,10,16,22]:
+                if temp_grid[i,0].index < 16:
+                    english_y = english_y + [temp_grid[i,0].index + 1]
+            for i in [5,11,17,23]:
+                if temp_grid[i,0].index < 16:
+                    physical_y = physical_y + [temp_grid[i,0].index + 1]
+            for i in [6,12,18,24]:
+                if temp_grid[i,0].index < 16:
+                    chemistry_y = chemistry_y + [temp_grid[i,0].index + 1]
+            print(chinese_y)
+            for i in range(count):
+                x = x + [str(i + 1)]
+            drawing(temp_out,x,chinese_y,math_y,english_y,physical_y,chemistry_y,str(temp_grid[0,0].index + 1))
+        
+    temp_grid[25,0].on_click(button_click)
     
     return
