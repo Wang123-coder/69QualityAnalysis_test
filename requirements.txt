@@ -43,7 +43,6 @@ pipreqs==0.4.10
 prometheus-client==0.8.0
 prompt-toolkit==3.0.3
 pycparser==2.20
-Pygments==2.5.2
 pyjsparser==2.7.1
 PyMySQL==0.9.3
 pyparsing==2.4.7
